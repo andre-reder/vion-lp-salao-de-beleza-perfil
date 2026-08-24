@@ -1,0 +1,114 @@
+---
+import SmoothScroll from "./SmoothScroll.tsx";
+import Cursor from "./Cursor.tsx";
+import Navbar from "./Navbar.tsx";
+import ConceptBanner from "./ConceptBanner.tsx";
+import Hero from "./Hero.tsx";
+import Manifesto from "./Manifesto.tsx";
+import Services from "./Services.tsx";
+import Experience from "./Experience.tsx";
+import Process from "./Process.tsx";
+import Differentials from "./Differentials.tsx";
+import Testimonials from "./Testimonials.tsx";
+import FAQ from "./FAQ.tsx";
+import Contact from "./Contact.tsx";
+import Footer from "./Footer.tsx";
+---
+
+<SmoothScroll client:load />
+<Cursor client:load />
+<Navbar client:load />
+<ConceptBanner client:load />
+
+<main id="topo">
+  <Hero client:load />
+  <Manifesto client:visible />
+  <Services client:visible />
+  <Experience client:visible />
+  <Process client:visible />
+  <Differentials client:visible />
+  <Testimonials client:visible />
+  <FAQ client:visible />
+  <Contact client:visible />
+</main>
+
+<Footer client:visible />
+
+<style is:global>
+  :root {
+    --color-canvas: #F5EFE6;
+    --color-surface: #FBF7F0;
+    --color-surface-elevated: #FFFFFF;
+    --color-text: #2A2018;
+    --color-text-muted: #6B5D52;
+    --color-border: #E5DCCF;
+    --color-accent: #A4565F;
+    --color-accent-deep: #7E3B44;
+    --color-sage: #8A9A7B;
+    --color-ink: #1A130E;
+
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body: "Inter", system-ui, sans-serif;
+    --font-detail: "Inter", system-ui, sans-serif;
+
+    --shadow-subtle: 0 1px 2px rgba(42, 32, 24, 0.06), 0 8px 24px rgba(42, 32, 24, 0.06);
+    --shadow-elevated: 0 2px 6px rgba(42, 32, 24, 0.08), 0 24px 60px rgba(42, 32, 24, 0.12);
+  }
+
+  /* Override external layout padding-top so the sticky navbar sits at the true top */
+  body {
+    padding-top: 0 !important;
+    background-color: var(--color-canvas);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Fluid display type for editorial headlines */
+  .font-display {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-variation-settings: "SOFT" 50, "WONK" 0;
+    letter-spacing: -0.01em;
+  }
+
+  .eyebrow {
+    font-family: var(--font-detail);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* Hairline rule used between editorial chapters */
+  .hairline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-border) 12%, var(--color-border) 88%, transparent);
+  }
+
+  /* Selection styling */
+  ::selection {
+    background: var(--color-accent);
+    color: #fff;
+  }
+
+  /* Hide native cursor only when custom cursor is active and pointer is fine */
+  @media (pointer: fine) {
+    body.cursor-ready,
+    body.cursor-ready * {
+      cursor: none !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+</style>

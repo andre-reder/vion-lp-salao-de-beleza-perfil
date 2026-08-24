@@ -1,0 +1,53 @@
+@layer reset, theme, base, components, utilities, tokens, responsive, motion;
+@import 'tailwindcss';
+@import './global.css';
+
+/* The generated/ and generated-preview/ directories are gitignored, so Tailwind
+ * v4's automatic content detection skips them. Explicitly add them as sources
+ * so utility classes used in generated landing pages are included in the build
+ * and in the dev server. */
+@source '../components';
+@source '../generated-preview';
+
+@layer base {
+  :root {
+    --font-display: Georgia, 'Times New Roman', serif;
+    --font-body: Inter, Avenir, 'Helvetica Neue', Arial, sans-serif;
+    --font-detail: 'Arial Narrow', Inter, Avenir, sans-serif;
+    --radius-control: 999px;
+    --radius-card: 0.35rem;
+    --radius-stage: clamp(0.65rem, 1.4vw, 1.25rem);
+    --shadow-subtle: 0 1px 0 color-mix(in srgb, var(--color-text) 8%, transparent);
+    --shadow-elevated: 0 2rem 6rem color-mix(in srgb, var(--color-text) 14%, transparent);
+    --focus-ring: 0 0 0 3px color-mix(in srgb, var(--color-accent) 40%, transparent);
+    --page-gutter: clamp(1.25rem, 4vw, 4.5rem);
+    --content-width: 90rem;
+    --notice-height: 0rem;
+    --header-height: 5.25rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--color-canvas, #ffffff);
+    color: var(--color-text, #111111);
+    font-family: var(--font-body);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    min-width: 20rem;
+    overflow-x: clip;
+    margin: 0;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent, #2563eb);
+    outline-offset: 4px;
+  }
+
+  ::selection {
+    color: var(--color-accent-contrast, #ffffff);
+    background: var(--color-accent, #2563eb);
+  }
+}
